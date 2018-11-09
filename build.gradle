@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'Certification'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    compile group: 'org.w3c', name: 'dom', version: '2.3.0-jaxb-1.0.6'
+    compile group: 'org.json', name: 'json', version: '20180813'
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.11'
+}

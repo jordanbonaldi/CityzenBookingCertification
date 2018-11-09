@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.adapter.channelmanager.othyssia.koedia.com" xmlns:sch="http://webservice.adapter.channelmanager.othyssia.koedia.com/document/v0.1/schemas">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <web:getInventories>
+            <sch:GetInventories>
+                <sch:Authentication login="@login" password="@pass" channel_manager_code="@channel" keystore="@keystore"/>
+                <sch:AccommodationInventory accom_code="@accom" from_date="2018-11-02" to_date="2018-11-02"/>
+            </sch:GetInventories>
+        </web:getInventories>
+    </soapenv:Body>
+</soapenv:Envelope>

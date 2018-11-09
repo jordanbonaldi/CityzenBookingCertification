@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.adapter.channelmanager.othyssia.koedia.com" xmlns:sch="http://webservice.adapter.channelmanager.othyssia.koedia.com/document/v0.1/schemas">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <web:updateInventory>
+            <sch:InventoryUpdate response_url="http://service.contentprovider.com/responseservice">
+                <sch:Authentication login="@login" password="@pass" channel_manager_code="@channel" keystore="@keystore"/>
+                <sch:Accommodation accom_code="@accom">
+                    <sch:DailyUpdates>
+                        <sch:DailyUpdate date="2018-11-02">
+                            <sch:Availabilities>
+                                <sch:Availability hosting_type_code="SGL1" is_open="true" sold_count="6">
+                                    <sch:RateType code="PV1" request_accepted="false" retrocession_delay="1" open_for_arrival="true"/>
+                                    <sch:Request/>
+                                </sch:Availability>
+                            </sch:Availabilities>
+                        </sch:DailyUpdate>
+                    </sch:DailyUpdates>
+                </sch:Accommodation>
+            </sch:InventoryUpdate>
+        </web:updateInventory>
+    </soapenv:Body>
+</soapenv:Envelope>
