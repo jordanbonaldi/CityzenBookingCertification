@@ -8,7 +8,7 @@ import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationList
 
 public class SharedCertification implements CertificationListener {
 
-    @Certification(xml = "createOpen.xml", id = 1)
+    @Certification(xml = "createOpen.xml", inventory="getInventory.xml", sleep = 10, id = 1)
     public boolean createOpenAvail(DailyManager update) {
         DailyUpdate day = update.getUpdates().get(0);
 
