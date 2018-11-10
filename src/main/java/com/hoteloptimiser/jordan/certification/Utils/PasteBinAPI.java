@@ -1,11 +1,8 @@
 package com.hoteloptimiser.jordan.certification.Utils;
 
-import me.nrubin29.pastebinapi.CreatePaste;
-import me.nrubin29.pastebinapi.ExpireDate;
-import me.nrubin29.pastebinapi.PastebinAPI;
-import me.nrubin29.pastebinapi.PastebinException;
-import me.nrubin29.pastebinapi.PrivacyLevel;
-import me.nrubin29.pastebinapi.User;
+import com.hoteloptimiser.jordan.certification.Utils.API.*;
+
+import java.io.IOException;
 
 public class PasteBinAPI {
 
@@ -25,14 +22,14 @@ public class PasteBinAPI {
 
         CreatePaste paste = user.createPaste()
                 .withName(title)
-                .withFormat(me.nrubin29.pastebinapi.Format.XML)
+                .withFormat(Format.XML)
                 .withPrivacyLevel(PrivacyLevel.UNLISTED)
                 .withExpireDate(ExpireDate.NEVER)
                 .withText(content);
 
         try {
             return paste.post();
-        } catch (PastebinException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return "bullshit";
