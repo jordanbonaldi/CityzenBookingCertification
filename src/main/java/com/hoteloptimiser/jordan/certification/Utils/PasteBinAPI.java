@@ -1,22 +1,19 @@
 package com.hoteloptimiser.jordan.certification.Utils;
 
 import com.hoteloptimiser.jordan.certification.Utils.API.*;
+import lombok.SneakyThrows;
+import lombok.experimental.UtilityClass;
 
-import java.io.IOException;
-
+@UtilityClass
 public class PasteBinAPI {
 
     private static final String DEV_KEY = System.getenv("devkey_pastebin");
 
+    @SneakyThrows
     public static String newPasteBin(String title, String content) {
         PastebinAPI api = new PastebinAPI(DEV_KEY);
 
-        User user = null;
-        try {
-            user = api.getUser(System.getenv("user_pastebin"), System.getenv("password_pastebin"));
-        } catch (PastebinException e) {
-            e.printStackTrace();
-        }
+        User user = api.getUser(System.getenv("user_pastebin"), System.getenv("password_pastebin"));;
 
         assert user != null;
 
@@ -27,12 +24,7 @@ public class PasteBinAPI {
                 .withExpireDate(ExpireDate.NEVER)
                 .withText(content);
 
-        try {
-            return paste.post();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "bullshit";
+        return paste.post();
     }
 
 }

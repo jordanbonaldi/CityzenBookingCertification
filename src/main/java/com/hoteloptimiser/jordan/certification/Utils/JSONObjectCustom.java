@@ -1,6 +1,7 @@
 package com.hoteloptimiser.jordan.certification.Utils;
 
 import lombok.Getter;
+import lombok.SneakyThrows;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

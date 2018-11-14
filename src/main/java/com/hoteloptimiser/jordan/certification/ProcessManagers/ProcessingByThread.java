@@ -1,24 +1,21 @@
 package com.hoteloptimiser.jordan.certification.ProcessManagers;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 
-@Getter
-@RequiredArgsConstructor
+@Data
 public class ProcessingByThread implements Runnable {
 
     private final ResultManager manager;
 
-
     @Override
+    @SneakyThrows
     public void run() {
 
         if (!this.manager.getCertification().inventory().equalsIgnoreCase(""))
-            try {
-                Thread.sleep(this.manager.getSleep() * 1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Thread.sleep(this.manager.getSleep() * 1000);
 
         this.manager.getResults();
 

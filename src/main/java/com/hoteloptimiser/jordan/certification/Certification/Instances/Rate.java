@@ -1,6 +1,7 @@
 package com.hoteloptimiser.jordan.certification.Certification.Instances;
 
 import com.hoteloptimiser.jordan.certification.Utils.JSONObjectCustom;
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONException;
@@ -8,8 +9,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@RequiredArgsConstructor
+@Data
 public class Rate {
 
     private final String type;

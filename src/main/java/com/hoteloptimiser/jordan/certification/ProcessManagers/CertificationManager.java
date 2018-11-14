@@ -1,22 +1,19 @@
 package com.hoteloptimiser.jordan.certification.ProcessManagers;
 
-import com.hoteloptimiser.jordan.certification.Certification.Managers.DailyManager;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import org.reflections.Reflections;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
 public class CertificationManager {
 
-    @Getter
     private List<Class<? extends CertificationListener>> clazz;
 
-    @Getter
     private List<ResultManager> results;
 
     public CertificationManager() {
@@ -30,12 +27,11 @@ public class CertificationManager {
         this.clazz = new ArrayList<>(reflection.getSubTypesOf(CertificationListener.class));
     }
 
+    @SneakyThrows
     private void addResult(Method m, Class<? extends CertificationListener> clazz) {
         ResultManager result = new ResultManager(m, clazz);
 
-        try {
-            result.sendXml();
-        } catch (Exception ignored) { }
+        result.sendXml();
 
         this.results.add(result);
     }

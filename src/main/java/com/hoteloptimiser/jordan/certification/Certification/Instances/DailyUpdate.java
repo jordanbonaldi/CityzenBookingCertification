@@ -3,13 +3,13 @@ package com.hoteloptimiser.jordan.certification.Certification.Instances;
 import com.hoteloptimiser.jordan.certification.Certification.Managers.AvailabilitiesManager;
 import com.hoteloptimiser.jordan.certification.Certification.Managers.RatesManager;
 import com.hoteloptimiser.jordan.certification.Utils.JSONObjectCustom;
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@Getter
-@RequiredArgsConstructor
+@Data
 public class DailyUpdate {
 
     private final String date;

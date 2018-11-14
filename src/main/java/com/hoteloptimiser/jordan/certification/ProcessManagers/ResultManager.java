@@ -4,8 +4,7 @@ import com.hoteloptimiser.jordan.certification.Certification.Managers.DailyManag
 import com.hoteloptimiser.jordan.certification.Utils.JSONObjectCustom;
 import com.hoteloptimiser.jordan.certification.Utils.PasteBinAPI;
 import com.hoteloptimiser.jordan.certification.Utils.UrlRequester;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -20,8 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
-@Getter
-@RequiredArgsConstructor
+@Data
 public class ResultManager {
 
     private final Method method;
@@ -50,45 +48,32 @@ public class ResultManager {
         return Files.lines(Paths.get("src/main/resources/" + xml)).collect(Collectors.joining("\n"));
     }
 
+    @SneakyThrows
     private CertificationListener instantiateClass() {
-        final Constructor constructor = this.clazz.getConstructors()[0];
-
-        try {
-            return (CertificationListener)constructor.newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return null;
+        val constructor = this.clazz.getConstructors()[0];
+        return (CertificationListener)constructor.newInstance();
     }
 
+    @SneakyThrows
     private boolean launchResult() {
-        CertificationListener listener = this.instantiateClass();
-        try {
-            return (boolean) method.invoke(listener, this.manager);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return false;
+        val listener = this.instantiateClass();
+        return (boolean) method.invoke(listener, this.manager);
     }
 
+    @SneakyThrows
     private String sendSpecXml(final String xml) {
-        try {
-            return UrlRequester.launchPostRequest("http://webservice.othyssia.dataloading.adapter.update.koedia.com/loadingservice",
-                    null, new UrlRequester.actionOnPost() {
-                        @Override
-                        public void action(Request.Builder build, RequestBody body) {
-                            build.post(body);
-                        }
+        return UrlRequester.launchPostRequest("http://webservice.othyssia.dataloading.adapter.update.koedia.com/loadingservice",
+                null, new UrlRequester.actionOnPost() {
+                    @Override
+                    public void action(Request.Builder build, RequestBody body) {
+                        build.post(body);
+                    }
 
-                        @Override
-                        public RequestBody getRequestBody() {
-                            return RequestBody.create(MediaType.parse("text/xml;charset=UTF-8"), xml);
-                        }
-                    });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "";
+                    @Override
+                    public RequestBody getRequestBody() {
+                        return RequestBody.create(MediaType.parse("text/xml;charset=UTF-8"), xml);
+                    }
+                });
     }
 
     private String replaceValues(String content) {
@@ -100,22 +85,18 @@ public class ResultManager {
                 .replaceAll("@accom", System.getenv("xml_accom"));
     }
 
+    @SneakyThrows
     private void getDailyUpdate() {
-        try {
-            this.inventoryXml = this.replaceValues(this.getContent(this.certification.inventory()));
+        this.inventoryXml = this.replaceValues(this.getContent(this.certification.inventory()));
 
-            String answer = this.sendSpecXml(this.inventoryXml);
+        String answer = this.sendSpecXml(this.inventoryXml);
 
-            JSONObjectCustom obj = new JSONObjectCustom(XML.toJSONObject(answer));
+        JSONObjectCustom obj = new JSONObjectCustom(XML.toJSONObject(answer));
 
-            obj = obj.getJSONObject("soap:Envelope").getJSONObject("soap:Body").getJSONObject("getInventoriesResponse").getJSONObject("InventoryResponse").getJSONObject("Accommodation").getJSONObject("DailyUpdates");
+        obj = obj.getJSONObject("soap:Envelope").getJSONObject("soap:Body").getJSONObject("getInventoriesResponse").getJSONObject("InventoryResponse").getJSONObject("Accommodation").getJSONObject("DailyUpdates");
 
-            this.manager = new DailyManager();
-            this.manager.deserialize(obj);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.manager = new DailyManager();
+        this.manager.deserialize(obj);
     }
 
     public void sendXml() throws Exception {

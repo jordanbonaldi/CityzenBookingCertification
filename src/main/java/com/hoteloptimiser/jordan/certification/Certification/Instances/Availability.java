@@ -1,11 +1,11 @@
 package com.hoteloptimiser.jordan.certification.Certification.Instances;
 
 import com.hoteloptimiser.jordan.certification.Utils.JSONObjectCustom;
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@Getter
-@RequiredArgsConstructor
+@Data
 public class Availability {
 
     private final boolean is_open;
