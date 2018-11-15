@@ -13,7 +13,7 @@ public class PasteBinAPI {
     public static String newPasteBin(String title, String content) {
         PastebinAPI api = new PastebinAPI(DEV_KEY);
 
-        User user = api.getUser(System.getenv("user_pastebin"), System.getenv("password_pastebin"));;
+        User user = api.getUser(System.getenv("user_pastebin"), System.getenv("password_pastebin"));
 
         assert user != null;
 

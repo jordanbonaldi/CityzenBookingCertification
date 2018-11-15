@@ -5,11 +5,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Certification {
 
     boolean ignored() default false;
+
+    String success() default "";
 
     String xml() default "";
 
@@ -18,4 +19,8 @@ public @interface Certification {
     int sleep() default 0;
 
     int id() default -1;
+
+    String[] values() default { "none" };
+
+    String[] replacement() default { "none" };
 }

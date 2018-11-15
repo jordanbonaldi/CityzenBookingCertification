@@ -9,8 +9,9 @@
                     <sch:DailyUpdates>
                         <sch:DailyUpdate date="2018-11-02">
                             <sch:Availabilities>
-                                <sch:Availability hosting_type_code="SGL1" is_open="true" sold_count="6">
-                                    <sch:RateType code="PV1" request_accepted="false" retrocession_delay="1" open_for_arrival="true"/>
+                                <sch:Availability hosting_type_code="@hosting" is_open="@open" sold_count="@stock">
+                                    <sch:RateType code="@code" request_accepted="false" retrocession_delay="@delay"
+                                                  min_night_count="@min_night" max_night_count="@max_night" open_for_arrival="@arrival" open_for_departure="@departure"/>
                                     <sch:Request/>
                                 </sch:Availability>
                             </sch:Availabilities>

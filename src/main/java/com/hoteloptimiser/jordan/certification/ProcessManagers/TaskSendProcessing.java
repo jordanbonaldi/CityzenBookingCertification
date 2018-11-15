@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 
 @Data
-public class ProcessingByThread implements Runnable {
+public class TaskSendProcessing implements TaskProcess {
 
     private final ResultManager manager;
 
@@ -14,22 +14,25 @@ public class ProcessingByThread implements Runnable {
     @SneakyThrows
     public void run() {
 
+        this.manager.sendXml();
+
         if (!this.manager.getCertification().inventory().equalsIgnoreCase(""))
             Thread.sleep(this.manager.getSleep() * 1000);
-
+        
         this.manager.getResults();
+    }
 
+    public void action() {
         System.out.println();
         System.out.println("========== " + this.manager.getName() + " ==========");
 
-        System.out.println("    Lien envoie : " + this.manager.getSendLink());
+        System.out.println("    Send Link : " + this.manager.getSendLink());
 
-        System.out.println("    Lien result : " + this.manager.getResultLink());
+        System.out.println("    Result Link : " + this.manager.getResultLink());
 
-        System.out.println("    Certification : " + (this.manager.isSuccess() ? "OK" : "KO"));
+        System.out.println("    Certified : " + (this.manager.isSuccess() ? "YES" : "NO"));
 
         System.out.println("========== " + this.manager.getName() + " ==========");
         System.out.println();
-
     }
 }

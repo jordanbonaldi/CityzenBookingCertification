@@ -14,6 +14,7 @@ public class RateType {
     private final String code;
     private final int max_night_count;
     private final boolean open_for_arrival;
+    private final boolean open_for_departure;
     private final boolean request_accepted;
 
     public static RateType newRateType(JSONObjectCustom objectCustom) {
@@ -24,6 +25,7 @@ public class RateType {
                 objectCustom.getString("code"),
                 objectCustom.getInt("max_night_count"),
                 objectCustom.getBoolean("open_for_arrival"),
+                objectCustom.getBoolean("open_for_departure"),
                 objectCustom.getBoolean("request_accepted"));
     }
 
