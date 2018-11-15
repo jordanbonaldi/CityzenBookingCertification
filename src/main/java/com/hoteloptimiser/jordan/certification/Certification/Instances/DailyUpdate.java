@@ -4,8 +4,6 @@ import com.hoteloptimiser.jordan.certification.Certification.Managers.Availabili
 import com.hoteloptimiser.jordan.certification.Certification.Managers.RatesManager;
 import com.hoteloptimiser.jordan.certification.Utils.JSONObjectCustom;
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 

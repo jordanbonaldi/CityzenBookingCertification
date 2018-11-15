@@ -24,7 +24,7 @@ public class TaskSendProcessing implements TaskProcess {
 
     public void action() {
         System.out.println();
-        System.out.println("========== " + this.manager.getName() + " ==========");
+        System.out.println("========== " + this.manager.getName() + " of Class " + this.manager.getClazz().getSimpleName() + " ==========");
 
         System.out.println("    Send Link : " + this.manager.getSendLink());
 
@@ -32,7 +32,7 @@ public class TaskSendProcessing implements TaskProcess {
 
         System.out.println("    Certified : " + (this.manager.isSuccess() ? "YES" : "NO"));
 
-        System.out.println("========== " + this.manager.getName() + " ==========");
+        System.out.println("========== " + this.manager.getName() + "of Class " + this.manager.getClazz().getSimpleName() + " ==========");
         System.out.println();
     }
 }

@@ -5,7 +5,7 @@ import com.hoteloptimiser.jordan.certification.ProcessManagers.Certification;
 import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationClassActivation;
 import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationListener;
 
-@CertificationClassActivation(classActivated = false)
+@CertificationClassActivation
 public class SharedSingleCertification implements CertificationListener {
 
     @Certification(xml = "createOpen.xml", id = 1, values = {

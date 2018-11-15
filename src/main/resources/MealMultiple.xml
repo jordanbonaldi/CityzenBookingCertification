@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.adapter.channelmanager.othyssia.koedia.com" xmlns:sch="http://webservice.adapter.channelmanager.othyssia.koedia.com/document/v0.1/schemas">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <web:updateInventory>
+            <sch:InventoryUpdate response_url="http://service.contentprovider.com/responseservice">
+                <sch:Authentication login="@login" password="@pass" channel_manager_code="@channel" keystore="@keystore"/>
+                <sch:Accommodation accom_code="@accom">
+                    <sch:DailyUpdates>
+                        <sch:DailyUpdate date="2018-11-@day1">
+                            <sch:Rates>
+                                <sch:Rate rate_type_code="@code" currency_code="EUR">
+                                    <sch:HostingRates>
+                                        <sch:HostingRate hosting_type_code="@hosting">
+                                            <sch:RateByRoom>
+                                                <sch:BuyingPrice>@price</sch:BuyingPrice>
+                                            </sch:RateByRoom>
+                                        </sch:HostingRate>
+                                    </sch:HostingRates>
+                                    <sch:MealRates>
+                                        <sch:MealRate meal_plan_code="@mealCode" adult_price="@mealPrice"/>
+                                    </sch:MealRates>
+                                </sch:Rate>
+                            </sch:Rates>
+                        </sch:DailyUpdate>
+                        <sch:DailyUpdate date="2018-11-@day2">
+                            <sch:Rates>
+                                <sch:Rate rate_type_code="@code" currency_code="EUR">
+                                    <sch:HostingRates>
+                                        <sch:HostingRate hosting_type_code="@hosting">
+                                            <sch:RateByRoom>
+                                                <sch:BuyingPrice>@price</sch:BuyingPrice>
+                                            </sch:RateByRoom>
+                                        </sch:HostingRate>
+                                    </sch:HostingRates>
+                                    <sch:MealRates>
+                                        <sch:MealRate meal_plan_code="@mealCode" adult_price="@mealPrice"/>
+                                    </sch:MealRates>
+                                </sch:Rate>
+                            </sch:Rates>
+                        </sch:DailyUpdate>
+                    </sch:DailyUpdates>
+                </sch:Accommodation>
+            </sch:InventoryUpdate>
+        </web:updateInventory>
+    </soapenv:Body>
+</soapenv:Envelope>

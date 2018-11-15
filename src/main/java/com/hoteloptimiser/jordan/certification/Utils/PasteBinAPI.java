@@ -24,7 +24,9 @@ public class PasteBinAPI {
                 .withExpireDate(ExpireDate.NEVER)
                 .withText(content);
 
-        return paste.post();
+        String post = paste.post();
+
+        return post.contains("24h") ? "https" : post;
     }
 
 }

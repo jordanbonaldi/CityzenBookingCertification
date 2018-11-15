@@ -5,7 +5,7 @@ import com.hoteloptimiser.jordan.certification.ProcessManagers.Certification;
 import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationClassActivation;
 import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationListener;
 
-@CertificationClassActivation()
+@CertificationClassActivation
 public class PrivateSingleCertification implements CertificationListener {
 
     @Certification(xml = "createOpen.xml", inventory = "getInventory.xml", sleep = 20, id = 7, values = {
@@ -105,7 +105,7 @@ public class PrivateSingleCertification implements CertificationListener {
     @Certification(xml = "createOpen.xml", inventory = "getInventory.xml", sleep = 15, id = 13, values = {
             "@hosting", "@open", "@stock", "@code", "@delay", "@min_night", "@max_night", "@arrival", "@departure"
     }, replacement = {
-            "SGL1", "true", "0", "PV1", "2", "2", "0", "true", "true"
+            "SGL1", "true", "0", "PV1", "2", "2", "0", "true", "false"
     })
     public boolean closeDeparture(DailyManager update) {
         return update.getUpdates()

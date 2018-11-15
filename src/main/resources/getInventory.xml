@@ -4,7 +4,7 @@
         <web:getInventories>
             <sch:GetInventories>
                 <sch:Authentication login="@login" password="@pass" channel_manager_code="@channel" keystore="@keystore"/>
-                <sch:AccommodationInventory accom_code="@accom" from_date="2018-11-02" to_date="2018-11-02"/>
+                <sch:AccommodationInventory accom_code="@accom" from_date="2018-11-02" to_date="2018-11-04"/>
             </sch:GetInventories>
         </web:getInventories>
     </soapenv:Body>

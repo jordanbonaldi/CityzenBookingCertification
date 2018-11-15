@@ -80,6 +80,17 @@ public class CertificationManager {
 
             this.taskProcessorsList.get("result").shutDown();
         }
+
+        System.out.println("Finished at " + new Date(System.currentTimeMillis()).toString());
+
+        int ok = (int) this.results.stream().filter(ResultManager::isSuccess).count();
+        int fail = (int) this.results.stream().filter(e -> !e.isSuccess()).count();
+
+        System.out.println("Total of : " + this.results.size());
+        System.out.println("Succeed : " + ok);
+        System.out.println("Failed : " + fail);
+        System.out.println("Result : " + (ok * 100) / this.results.size() + "%");
+
     }
 
 }
