@@ -7,7 +7,7 @@ import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationClas
 import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationListener;
 import lombok.val;
 
-@CertificationClassActivation
+@CertificationClassActivation(classActivated = false)
 public class RatesMealCertification implements CertificationListener {
 
     private Rate getRates(DailyManager update, int x) {
@@ -36,7 +36,7 @@ public class RatesMealCertification implements CertificationListener {
                 .orElse(null) != null;
     }
 
-    @Certification(xml = "Meal.xml", inventory = "getInventory.xml", sleep = 15, id = 14, values = {
+    @Certification(xml = "Meal.xml", inventory = "getInventory.xml", sleep = 15, id = 15, values = {
             "@code", "@hosting", "@price", "@mealCode", "@mealPrice"
     }, replacement = {
             "PV1", "SGL1", "70", "11", "10"

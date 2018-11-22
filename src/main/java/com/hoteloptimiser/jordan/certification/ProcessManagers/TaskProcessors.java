@@ -38,6 +38,7 @@ public class TaskProcessors {
 
     public TaskProcessors(TaskProcess ... taskProcesses) {
         this.taskProcesses = Arrays.stream(taskProcesses).map(TaskProcesses::new).collect(Collectors.toList());
+        
         this.executorService = Executors.newFixedThreadPool(5);
     }
 

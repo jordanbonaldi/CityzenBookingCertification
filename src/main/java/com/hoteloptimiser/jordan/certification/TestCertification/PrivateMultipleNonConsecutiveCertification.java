@@ -9,7 +9,7 @@ import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationList
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@CertificationClassActivation
+@CertificationClassActivation(classActivated = false)
 public class PrivateMultipleNonConsecutiveCertification implements CertificationListener {
 
     private Boolean consumeAndApply(DailyManager update, Predicate<Availability> predicate) {

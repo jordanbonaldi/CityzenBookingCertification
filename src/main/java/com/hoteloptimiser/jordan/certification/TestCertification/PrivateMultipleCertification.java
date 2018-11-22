@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@CertificationClassActivation
+@CertificationClassActivation(classActivated = false)
 public class PrivateMultipleCertification implements CertificationListener {
 
     private Boolean consumeAndApply(DailyManager update, Predicate<Availability> predicate) {

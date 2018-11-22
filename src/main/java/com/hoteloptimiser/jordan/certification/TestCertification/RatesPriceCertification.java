@@ -7,7 +7,7 @@ import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationClas
 import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationListener;
 import lombok.val;
 
-@CertificationClassActivation
+@CertificationClassActivation(classActivated = false)
 public class RatesPriceCertification implements CertificationListener {
 
     private Rate getRates(DailyManager update, int x) {

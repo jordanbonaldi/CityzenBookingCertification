@@ -5,7 +5,7 @@ import com.hoteloptimiser.jordan.certification.ProcessManagers.Certification;
 import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationClassActivation;
 import com.hoteloptimiser.jordan.certification.ProcessManagers.CertificationListener;
 
-@CertificationClassActivation
+@CertificationClassActivation(classActivated = false)
 public class PrivateSingleCertification implements CertificationListener {
 
     @Certification(xml = "createOpen.xml", inventory = "getInventory.xml", sleep = 20, id = 7, values = {

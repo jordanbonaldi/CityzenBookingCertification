@@ -54,7 +54,8 @@ public class CertificationManager {
                                     m.isAnnotationPresent(Certification.class)
                                             && !m.getAnnotation(Certification.class).ignored()
                                             && m.getParameterTypes().length == 1
-                            ).forEach(e -> addResult(e, l));
+                            ).sorted(Comparator.comparingInt(a -> a.getAnnotation(Certification.class).id()))
+                                .forEach(e -> addResult(e, l));
         });
         return this;
     }
